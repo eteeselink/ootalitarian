@@ -13,13 +13,14 @@ export class Poll {
         var htmlStr = '';
         for (var i = 0; i < getData().polls.length; i++) { 
             var question = getData().polls[i];
+            var questionId = `q${i}`;
             htmlStr += question.question + '<br>';
             
             // add options for every choice
             for (var j = 0; j < question.choice.length; j++) { 
                 var choice = question.choice[j];
                 var choiceId = `${i}${j}`
-                htmlStr += `<input type="radio" name="${question.question}" value="${choice}" id="${choiceId}">
+                htmlStr += `<input type="radio" name="${questionId}" value="${choice}" id="${choiceId}">
                 <label for="${choiceId}">${choice}</label><br>`;
             }
         }
@@ -39,8 +40,9 @@ export class Poll {
             }
 
             for (var i = 0; i < getData().polls.length; i++) { 
-                var question = getData().polls[i];                
-                getData().results[i].push(this.element.querySelector("input[name=" + question.question + "]:checked").value);
+                //var question = getData().polls[i];  
+                var questionId = `q${i}`;              
+                getData().results[i].push(this.element.querySelector("input[name=" + questionId + "]:checked").value);
             }
             this.render();
         })
