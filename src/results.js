@@ -18,7 +18,7 @@ export class Results {
             var answerCount = this.getAnswerCount(this.data.polls[i], this.data.results[i]);
             var answerStr = '(';
             Object.keys(answerCount).forEach(a => {
-                answerStr += `${a}:${answerCount[a]}`;
+                answerStr += `${a}:${answerCount[a]}, `;
             });
             answerStr += ')';
 
@@ -39,7 +39,7 @@ export class Results {
     countElement(array, item) {
         var count = 0;
         for (var i = 0; i < array.length; ++i) {
-            if (array[i] === item)
+            if (array[i] == item)
                 count++;
         }
         return count;
