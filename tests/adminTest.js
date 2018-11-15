@@ -9,9 +9,9 @@ function test_sendData() {
     admin.render();
 
     let div0 = el.querySelector("#div_0");
-    div0.querySelector("input[id='question']").text = 'Cats or dogs?';
-    div0.querySelector("input[id='type']").text = 'multiple-choice';
-    div0.querySelector("input[id='options']").text = 'cats,dogs';
+    div0.querySelector("input[id='question']").value = 'Cats or dogs?';
+    div0.querySelector("input[id='type']").value = 'multiple-choice';
+    div0.querySelector("input[id='options']").value = 'cats,dogs';
 
     el.querySelector("button[id='start']").click();
 
