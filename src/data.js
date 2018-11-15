@@ -7,6 +7,7 @@ class Data {
 
 const data = new Data();
 export function getData() {
-    this.polls = [];
-    this.results = [];
+    data.polls = [];
+    data.results = [];
+    return data;
 }
