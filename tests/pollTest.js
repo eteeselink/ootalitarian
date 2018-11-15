@@ -6,7 +6,7 @@ import { Poll } from "../src/poll.js";
 
 
 function test2() {
-    var question;
+    var question = {};
     question.question = 'testquestion';
     question.type = 'bla';
     question.choice = new Array('a', 'b', 'c');
