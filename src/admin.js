@@ -5,12 +5,22 @@ export class Admin {
 
   constructor(element) {
     this.element = element;
+    getData().polls = [];
+    getData().results = [];
   }
 
   render() {
     this.element.innerHTML = `
-      <label for="question">Please write the question you are struggling with:</label>
-      <input type="text" id="question"/>
+      <label for="question">Please write the question you are struggling with:</label><br/>
+      <input type="text" size="80" id="question"/><br/>
+
+      <label for="type">Poll Type:</label><br/>
+      <input type="text" size="30" id="type"/><br/>
+
+      <label for="options">Please specify options (comma-separated):</label><br/>
+      <input type="text" size="80" id="options"/><br/>
+
+      <button id="new">Add Poll</button>
       <button id="start">Start</button>
     `;
 
@@ -22,7 +32,10 @@ export class Admin {
         ev.preventDefault();
 
         let questionText = this.element.querySelector("#question").value;
-        getData().polls.push(questionText);
+        let questionType = this.element.querySelector("#type").value;
+        let options = this.element.querySelector("#options").value.split(",");
+
+        getData().polls.push({questionText,questionType, options});
 
         console.log(getData());
 
