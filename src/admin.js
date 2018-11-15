@@ -9,9 +9,9 @@ export class Admin {
     getData().results = [];
   }
 
-  createPoll(target) {
+  createPoll(target, index) {
     target.innerHTML = `
-      <div>
+      <div id="div_${index}">
         <label for="question">Please write the question you are struggling with:</label><br/>
         <input type="text" size="80" id="question"/><br/>
 
@@ -36,7 +36,7 @@ export class Admin {
     `;
 
     var div = document.createElement('div');
-    this.createPoll(div);
+    this.createPoll(div, 0);
     this.element.querySelector("#container").appendChild(div);
 
     this.element.querySelector("button[id='start']").addEventListener("click", ev => {
