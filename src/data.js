@@ -1,5 +1,4 @@
 class Data {
-
     constructor() {
         this.polls = [];
         this.results = [];    
