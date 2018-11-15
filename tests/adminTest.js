@@ -3,7 +3,7 @@ import {getData} from "../src/data.js";
 import {assert, report} from "./assert.js";
 import { Poll } from "../src/poll.js";
 
-function test1() {
+function test_sendData() {
     const el = document.createElement("div");
     const admin = new Admin(el);
     admin.render();
@@ -19,10 +19,8 @@ function test1() {
     assert( () => getData().polls[0].question === 'Cats or dogs?' );
 }
 
-
-
 // now we run all tests sequentially
-test1();
+test_sendData();
 
 // display ugly results summary
 report();

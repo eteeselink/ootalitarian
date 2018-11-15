@@ -69,7 +69,5 @@ export class Admin {
 
       getData().polls.push({question,type, choice});
     }
-
-    console.log(getData());
   }
 }
