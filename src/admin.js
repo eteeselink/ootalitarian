@@ -42,36 +42,30 @@ export class Admin {
     this.createPoll(div);
     this.element.querySelector("#container").appendChild(div);
 
+    // Start the poll
     this.element.querySelector("button[id='start']").addEventListener("click", ev => {
-        // always add `preventDefault` in an event handler. otherwise, the browser
-        // will do some default action which usually means submitting the data to the server,
-        // which causes the entire page to reload.
-        // since we have no server, we don't want that :-)
         ev.preventDefault();
-
-        for (var i = 0; i < this.index; i++) {
-          let currentDiv = this.element.querySelector("#div_" + i);
-          let question = currentDiv.querySelector("#question").value;
-          let type = currentDiv.querySelector("#type").value;
-          let choice = currentDiv.querySelector("#options").value.split(",");
-
-          getData().polls.push({question,type, choice});
-        }
-        
+        this.collectData();
         new Poll(this.element).render("Nobi");
     });
 
+    // Create a new poll
     this.element.querySelector("button[id='new']").addEventListener("click", ev => {
-        // always add `preventDefault` in an event handler. otherwise, the browser
-        // will do some default action which usually means submitting the data to the server,
-        // which causes the entire page to reload.
-        // since we have no server, we don't want that :-)
         ev.preventDefault();
-
         var div = document.createElement('div');
         this.createPoll(div);
         this.element.querySelector("#container").appendChild(div);
     });
   }
 
+  collectData() {
+    for (var i = 0; i < this.index; i++) {
+      let currentDiv = this.element.querySelector("#div_" + i);
+      let question = currentDiv.querySelector("#question").value;
+      let type = currentDiv.querySelector("#type").value;
+      let choice = currentDiv.querySelector("#options").value.split(",");
+
+      getData().polls.push({question,type, choice});
+    }
+  }
 }
