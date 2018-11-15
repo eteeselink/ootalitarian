@@ -26,7 +26,6 @@ export class Poll {
         
         // add button
         htmlStr += `<button id="btn">Vote!</button><br>`;
-        // add button
         htmlStr += `<button id="results">Results</button>`;
         this.element.innerHTML = htmlStr;
 
@@ -43,6 +42,7 @@ export class Poll {
                 var question = getData().polls[i];                
                 getData().results[i].push(this.element.querySelector("input[name=" + question.question + "]:checked").value);
             }
+            this.render();
         })
 
         document.getElementById("results").addEventListener("click", ev => {
