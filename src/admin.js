@@ -32,9 +32,11 @@ export class Admin {
   render() {
 
     this.element.innerHTML = `
-      <button id="new">Add Poll</button>
-      <button id="start">Start</button>
+      <h3>Welcome to your voting application!</h3>
+      <button id="start">Go!</button>
+      <button id="new">Add another poll</button>
       <br/>
+      <hr/>
       <div id="container"></div>
     `;
 
@@ -67,5 +69,7 @@ export class Admin {
 
       getData().polls.push({question,type, choice});
     }
+
+    console.log(getData());
   }
 }
