@@ -27,7 +27,7 @@ export class Poll {
             // since we have no server, we don't want that :-)
             ev.preventDefault();
 
-            getData().results[0] = this.element.querySelector("input[name=pizza]:checked").value;
+            getData().results.push(this.element.querySelector("input[name=pizza]:checked").value);
             //const bestPizza = this.element.querySelector("input[name=pizza]:checked").value;
             //this.element.innerHTML = `<p>Indeed ${name}, Pizza ${bestPizza} is by far the best.</p><div id="pizza"></div>`;
             
