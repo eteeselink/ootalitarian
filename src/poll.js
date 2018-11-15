@@ -1,5 +1,5 @@
 import {getData} from "./data.js";
-
+import {Results} from "./results.js";
 
 export class Poll {
     /**
@@ -10,15 +10,22 @@ export class Poll {
     }
 
     render() {
-        this.element.innerHTML = `
+        var htmlStr = '';
+        for (var i = 0; i < getData().polls.length; i++) { 
+            question = getData().polls[i];
+            htmlStr += question.question + '<br>';
             
-            <input type="radio" name="pizza" value="${getData().polls[0]}" id="radio1">
-            <label for="radio1">${getData().polls[0]}</label><br>
-
-
-
-            <button id="btn">Vote!</button>
-        `;
+            // add options for every choice
+            for (var j = 0; j < getData().question.choice.length; j++) { 
+                choiceId = str(i) + str(j);
+                htmlStr += `<input type="radio" name="${question.question}" value="${choice}" id="${choiceId}"></br>
+                <label for="${choiceId}">${choice}</label><br>`;
+            }
+        }
+        
+        // add button
+        htmlStr += `<button id="btn">Vote!</button>`;
+        this.element.innerHTML = htmlStr;
 
         document.getElementById("btn").addEventListener("click", ev => {
             // always add `preventDefault` in an event handler. otherwise, the browser
@@ -26,8 +33,19 @@ export class Poll {
             // which causes the entire page to reload.
             // since we have no server, we don't want that :-)
             ev.preventDefault();
+            if (getData().results.length == 0) {
+                for (var i = 0; i < getData().polls.length; i++) { 
+                    getData().results.push(new Array());
+                }
+            }
 
-            getData().results.push(this.element.querySelector("input[name=pizza]:checked").value);
+            for (var i = 0; i < getData().polls.length; i++) { 
+                question = getData().polls[i];                
+                getData().results[i] = this.element.querySelector("input[name=" + question.question + "]:checked").value;
+            }
+            
+            const results = new Results(document.getElementById("hello"));
+            results.render();
             //const bestPizza = this.element.querySelector("input[name=pizza]:checked").value;
             //this.element.innerHTML = `<p>Indeed ${name}, Pizza ${bestPizza} is by far the best.</p><div id="pizza"></div>`;
             
