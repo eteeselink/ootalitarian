@@ -1,13 +1,12 @@
 class Data {
 
     constructor() {
-
+        this.polls = [];
+        this.results = [];    
     }
 }
 
 const data = new Data();
 export function getData() {
-    data.polls = [];
-    data.results = [];
     return data;
 }
