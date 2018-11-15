@@ -10,6 +10,7 @@ export class Poll {
     }
 
     render() {
+        console.log(getData());
         var htmlStr = '';
         for (var i = 0; i < getData().polls.length; i++) { 
             var question = getData().polls[i];
