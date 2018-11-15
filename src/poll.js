@@ -11,7 +11,7 @@ export class Poll {
 
     render() {
         this.element.innerHTML = `
-            Hi ${name}! What's the best pizza?<br>
+            
             <input type="radio" name="pizza" value="${getData().polls[0]}" id="radio1">
             <label for="radio1">${getData().polls[0]}</label><br>
 
