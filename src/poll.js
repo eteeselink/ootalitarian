@@ -12,13 +12,14 @@ export class Poll {
     render() {
         var htmlStr = '';
         for (var i = 0; i < getData().polls.length; i++) { 
-            question = getData().polls[i];
+            var question = getData().polls[i];
             htmlStr += question.question + '<br>';
             
             // add options for every choice
-            for (var j = 0; j < getData().question.choice.length; j++) { 
-                choiceId = str(i) + str(j);
-                htmlStr += `<input type="radio" name="${question.question}" value="${choice}" id="${choiceId}"></br>
+            for (var j = 0; j < question.choice.length; j++) { 
+                var choice = question.choice[j];
+                var choiceId = `${i}${j}`
+                htmlStr += `<input type="radio" name="${question.question}" value="${choice}" id="${choiceId}">
                 <label for="${choiceId}">${choice}</label><br>`;
             }
         }
@@ -40,7 +41,7 @@ export class Poll {
             }
 
             for (var i = 0; i < getData().polls.length; i++) { 
-                question = getData().polls[i];                
+                var question = getData().polls[i];                
                 getData().results[i] = this.element.querySelector("input[name=" + question.question + "]:checked").value;
             }
             
